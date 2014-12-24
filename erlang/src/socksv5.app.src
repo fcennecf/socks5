@@ -1,0 +1,13 @@
+{application, socksv5,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  lager
+                 ]},
+  {mod, { socksv5_app, []}},
+  {env, []}
+ ]}.
