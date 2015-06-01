@@ -158,7 +158,7 @@ accept_connect_and_run_worker(#state{ connection_id = Id, listener = Socket} = S
             {ok, Child} = socks5_worker_sup:start_acceptor(Id, ClientSocket),
             case  gen_tcp:controlling_process(ClientSocket, Child) of
                 ok ->
-                    accept_connect_and_run_worker(State#state{connection_id = Id+1});
+                     ?MODULE:accept_connect_and_run_worker(State#state{connection_id = Id+1});
                 {error, Error} ->
                     lager:error("Control process didn't set. Pid: ~p Err: ~p", [Child, Error]),
                     supervisor:terminate_child(socks5_worker_sup, Child),
